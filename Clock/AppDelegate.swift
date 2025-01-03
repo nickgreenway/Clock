@@ -11,8 +11,20 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    var mainWindow: NSWindow?
+
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // Insert code here to initialize your application
+        // Set the window title
+        if let mainWindow = NSApplication.shared.windows.first {
+            mainWindow.title = "Clock"
+        }
+    }
+
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if !flag, let window = mainWindow {
+            window.makeKeyAndOrderFront(self) // Reopen the main window
+        }
+        return true
     }
 
     func applicationWillTerminate(_ notification: Notification) {

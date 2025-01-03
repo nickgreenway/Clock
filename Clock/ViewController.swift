@@ -7,28 +7,26 @@
 //
 
 import Cocoa
-import Foundation
 
 class ViewController: NSViewController {
 
-    @IBOutlet weak var dateLabel: NSTextField!
+    @IBOutlet weak var date: NSTextField!
     @IBOutlet weak var time: NSTextField!
-    @IBOutlet weak var countdown: NSTextField!
 
     let clock = Clock()
     var timer: Timer?
-    let datecountdowntimer = DateCountDownTimer()
 
     override func viewWillAppear() {
         super.viewWillAppear()
 
+        // Initialize the timers to update time and date labels
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
-        datecountdowntimer.initializeTimer(pYear: 2018, pMonth: "June", pDay: 4, pHour: 13, pMin: 0, pSec: 0)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateDateLabel), userInfo: nil, repeats: true)
     }
 
     override var representedObject: Any? {
         didSet {
-            // Update the view, if already loaded.
+            // Update the view, if already loaded
         }
     }
 
@@ -36,11 +34,12 @@ class ViewController: NSViewController {
         let formatter = DateFormatter()
         formatter.timeStyle = .medium
         time.stringValue = formatter.string(from: clock.currentTime)
+        time.font = NSFont.monospacedDigitSystemFont(ofSize: 175, weight: .regular)
     }
 
     @objc func updateDateLabel() {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
-        dateLabel.stringValue = formatter.string(from: clock.currentTime)
+        date.stringValue = formatter.string(from: clock.currentTime)
     }
 }

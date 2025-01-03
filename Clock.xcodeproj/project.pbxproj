@@ -12,7 +12,6 @@
 		A15BA6121DDBABCC0084996A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A15BA6111DDBABCC0084996A /* Assets.xcassets */; };
 		A15BA6151DDBABCC0084996A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A15BA6131DDBABCC0084996A /* Main.storyboard */; };
 		A15BA61D1DDBAC630084996A /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15BA61C1DDBAC630084996A /* Clock.swift */; };
-		A1DA312020C3AB2400F1F08F /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DA311F20C3AB2400F1F08F /* Countdown.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +22,6 @@
 		A15BA6141DDBABCC0084996A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A15BA6161DDBABCC0084996A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A15BA61C1DDBAC630084996A /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
-		A1DA311F20C3AB2400F1F08F /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +56,6 @@
 			children = (
 				A15BA60D1DDBABCC0084996A /* AppDelegate.swift */,
 				A15BA60F1DDBABCC0084996A /* ViewController.swift */,
-				A1DA311F20C3AB2400F1F08F /* Countdown.swift */,
 				A15BA61C1DDBAC630084996A /* Clock.swift */,
 				A15BA6111DDBABCC0084996A /* Assets.xcassets */,
 				A15BA6131DDBABCC0084996A /* Main.storyboard */,
@@ -109,6 +106,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -142,7 +140,6 @@
 				A15BA61D1DDBAC630084996A /* Clock.swift in Sources */,
 				A15BA6101DDBABCC0084996A /* ViewController.swift in Sources */,
 				A15BA60E1DDBABCC0084996A /* AppDelegate.swift in Sources */,
-				A1DA312020C3AB2400F1F08F /* Countdown.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,9 +270,10 @@
 				DEVELOPMENT_TEAM = XUK9L4M953;
 				INFOPLIST_FILE = Clock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.Clock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -288,9 +286,10 @@
 				DEVELOPMENT_TEAM = XUK9L4M953;
 				INFOPLIST_FILE = Clock/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.Clock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

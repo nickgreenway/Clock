@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -601,7 +600,7 @@
                                         <menuItem title="Show Sidebar" keyEquivalent="s" id="kIP-vf-haE">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
-                                                <action selector="toggleSourceList:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="iwa-gc-5KM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Enter Full Screen" keyEquivalent="f" id="4J7-dP-txa">
@@ -665,7 +664,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -696,18 +695,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="950" height="489"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xdx-A2-v5y">
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xdx-A2-v5y">
                                             <rect key="frame" x="39" y="144" width="872" height="202"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="202" id="PeW-Tn-o50"/>
                                             </constraints>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="00:00:00" id="VcN-28-PkK">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="00:00:00" id="VcN-28-PkK">
                                                 <font key="font" metaFont="system" size="175"/>
                                                 <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7PG-dm-KKa">
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7PG-dm-KKa">
                                             <rect key="frame" x="5" y="321" width="945" height="64"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="64" id="3Z3-sp-Y2h"/>
@@ -718,23 +717,9 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QWA-Zd-6A5">
-                                            <rect key="frame" x="256" y="-66" width="438" height="202"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="434" id="GdV-ez-Qt0"/>
-                                                <constraint firstAttribute="height" constant="202" id="otB-g0-K3e"/>
-                                            </constraints>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="00:00:00" id="MMv-CD-2hZ">
-                                                <font key="font" metaFont="system" size="92"/>
-                                                <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="QWA-Zd-6A5" firstAttribute="top" secondItem="Xdx-A2-v5y" secondAttribute="bottom" constant="8" symbolic="YES" id="3dM-th-7wS"/>
                                         <constraint firstItem="Xdx-A2-v5y" firstAttribute="centerY" secondItem="vcw-ZP-RjO" secondAttribute="centerY" id="4fK-SP-xM7"/>
-                                        <constraint firstItem="QWA-Zd-6A5" firstAttribute="centerX" secondItem="Xdx-A2-v5y" secondAttribute="centerX" id="GLe-Ff-Hff"/>
                                         <constraint firstItem="7PG-dm-KKa" firstAttribute="centerX" secondItem="Xdx-A2-v5y" secondAttribute="centerX" constant="2.5" id="Qfr-OB-feO"/>
                                         <constraint firstItem="7PG-dm-KKa" firstAttribute="top" secondItem="Xdx-A2-v5y" secondAttribute="top" constant="-39" id="UrF-I8-2kR"/>
                                         <constraint firstItem="Xdx-A2-v5y" firstAttribute="leading" secondItem="vcw-ZP-RjO" secondAttribute="leading" constant="41" id="m0r-ki-I10"/>
@@ -751,12 +736,8 @@
                             <constraint firstAttribute="trailing" secondItem="aPV-LW-QPV" secondAttribute="trailing" id="dq7-5n-9PV"/>
                             <constraint firstItem="aPV-LW-QPV" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="pqQ-Ud-CAO"/>
                         </constraints>
-                        <connections>
-                            <outlet property="countdownLabel" destination="MMv-CD-2hZ" id="AMu-Am-4TW"/>
-                        </connections>
                     </view>
                     <connections>
-                        <outlet property="countdown" destination="QWA-Zd-6A5" id="6a8-Fm-1GX"/>
                         <outlet property="date" destination="sah-5a-Wbs" id="n53-KA-nW6"/>
                         <outlet property="dateLabel" destination="sah-5a-Wbs" id="Erq-mE-o6O"/>
                         <outlet property="time" destination="Xdx-A2-v5y" id="gdW-vC-fYM"/>
