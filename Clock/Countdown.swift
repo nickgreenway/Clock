@@ -8,93 +8,76 @@
 
 import Foundation
 
+func defaultUpdateActionHandler(string: String) {}
 
-
-func defaultUpdateActionHandler(string:String)->(){
-    
-}
-
-func defaultCompletionActionHandler()->(){
-    
-}
+func defaultCompletionActionHandler() {}
 
 public class DateCountDownTimer {
-    
+
     var countdownTimer: Timer!
     var totalTime = 60
-    var dateString = "June 4, 2018 13:00:00" as String
-    var UpdateActionHandler:(String)->() = defaultUpdateActionHandler
-    var CompletionActionHandler:()->() = defaultCompletionActionHandler
-    
-    public init(){
+    var dateString = "June 4, 2018 13:00:00"
+    var updateActionHandler: (String) -> () = defaultUpdateActionHandler
+    var completionActionHandler: () -> () = defaultCompletionActionHandler
+
+    public init() {
         countdownTimer = Timer()
-        totalTime = 60
-        dateString = "June 4, 2018 13:00:00" as String
-        UpdateActionHandler = defaultUpdateActionHandler
-        CompletionActionHandler = defaultCompletionActionHandler
     }
-    
-    public func initializeTimer(pYear:Int, pMonth:String, pDay:Int, pHour:Int, pMin:Int, pSec:Int){
-        
-        self.dateString = "\(pMonth) \(pDay), \(pYear) \(pHour):\(pMin):\(pSec)" as String
-        
-        // Setting Today's Date
+
+    public func initializeTimer(pYear: Int, pMonth: String, pDay: Int, pHour: Int, pMin: Int, pSec: Int) {
+        self.dateString = "\(pMonth) \(pDay), \(pYear) \(pHour):\(pMin):\(pSec)"
+
         let currentDate = Date()
-        
-        // Setting TargetDate
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
-        dateFormatter.timeZone = NSTimeZone.local
-        let targedDate = dateFormatter.date(from: dateString) as! Date
-        
-        // Calculating the difference of dates for timer
-        let calendar = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: currentDate, to: targedDate)
-        let days = calendar.day!
-        let hours = calendar.hour!
-        let minutes = calendar.minute!
-        let seconds = calendar.second!
-        totalTime = hours * 60 * 60 + minutes * 60 + seconds
-        totalTime = days * 60 * 60 * 24 + totalTime
+        dateFormatter.timeZone = .current
+        guard let targetDate = dateFormatter.date(from: dateString) else { return }
+
+        let components = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: currentDate, to: targetDate)
+        let days = components.day ?? 0
+        let hours = components.hour ?? 0
+        let minutes = components.minute ?? 0
+        let seconds = components.second ?? 0
+
+        totalTime = days * 24 * 60 * 60 + hours * 60 * 60 + minutes * 60 + seconds
     }
-    
-    func numberOfDaysInMonth(month:Int) -> Int{
-        let dateComponents = DateComponents(year: 2015, month: 7)
+
+    func numberOfDaysInMonth(month: Int) -> Int {
+        let dateComponents = DateComponents(year: 2015, month: month)
         let calendar = Calendar.current
-        let date = calendar.date(from: dateComponents)!
-        
-        let range = calendar.range(of: .day, in: .month, for: date)!
-        let numDays = range.count
-        print(numDays)
-        return numDays
+        guard let date = calendar.date(from: dateComponents) else { return 0 }
+
+        let range = calendar.range(of: .day, in: .month, for: date)
+        return range?.count ?? 0
     }
-    
-    public func startTimer(pUpdateActionHandler:@escaping (String)->(),pCompletionActionHandler:@escaping ()->()) {
+
+    public func startTimer(updateActionHandler: @escaping (String) -> (), completionActionHandler: @escaping () -> ()) {
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-        self.CompletionActionHandler = pCompletionActionHandler
-        self.UpdateActionHandler = pUpdateActionHandler
+        self.updateActionHandler = updateActionHandler
+        self.completionActionHandler = completionActionHandler
     }
-    
+
     @objc func updateTime() {
-        self.UpdateActionHandler(timeFormatted(totalTime))
-        
+        updateActionHandler(timeFormatted(totalTime))
+
         if totalTime > 0 {
             totalTime -= 1
         } else {
             endTimer()
         }
     }
-    
+
     func endTimer() {
-        self.CompletionActionHandler()
+        completionActionHandler()
         countdownTimer.invalidate()
     }
-    
+
     func timeFormatted(_ totalSeconds: Int) -> String {
-        let seconds: Int = totalSeconds % 60
-        let minutes: Int = (totalSeconds / 60) % 60
-        let hours: Int = (totalSeconds / 60 / 60) % 24
-        let days: Int = (totalSeconds / 60 / 60 / 24)
+        let seconds = totalSeconds % 60
+        let minutes = (totalSeconds / 60) % 60
+        let hours = (totalSeconds / 3600) % 24
+        let days = totalSeconds / (3600 * 24)
         return String(format: "%dD %02dH %02dM %02dS", days, hours, minutes, seconds)
     }
-    
 }
